@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\User; // Agrega esto al inicio del archivo
+
 Route::get('/', function () {
-    $users = App\User::get();
+    $users = User::get();
 
     return view('welcome', ['users' => $users]);
 });
