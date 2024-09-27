@@ -27,6 +27,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+        // Elimina la restricción de clave foránea
+        $table->dropForeign(['level_id']);
+        
+        // Elimina la columna 'level_id'
+        $table->dropColumn('level_id');
+    });
     }
 };

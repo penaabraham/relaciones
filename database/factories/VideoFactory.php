@@ -18,8 +18,8 @@ class VideoFactory extends Factory
     {
         return [
             'name' => $this->faker->sentence,
-            'category_id' => rand(1-4),
-            'user_id' => rand(1-5)
+            'category_id' => rand(1, 4),
+            'user_id' => rand(1, 5)
         ];
     }
 }
