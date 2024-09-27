@@ -25,7 +25,7 @@
                     <p>
                         <strong>País</strong>: {{ $user->location->country }}<br>
                         <strong>Nivel</strong>: @if($user->level)
-                            <a href="{{route('level',$user->level->id)}}"> {{ $user->level->name }}</a>
+                            <a href="#"> {{ $user->level->name }}</a>
                         @else
                             ---
                         @endif <br>
