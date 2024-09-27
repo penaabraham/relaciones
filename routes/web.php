@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User; // Asegúrate de tener este namespace correcto
+use App\Models\Level; // Importa el modelo Level
 
 Route::get('/', function () {
     $users = User::get();
@@ -29,3 +30,21 @@ Route::get('/profile/{id}', function ($id) {
         'videos' => $videos
     ]); // Usa array asociativo para pasar datos
 })->name('profile');
+
+Route::get('/level/{id}', function ($id) {
+    $level = Level::find($id);
+
+    $posts = $level->posts()
+    ->with('category','image','tags')
+    ->withCount('comments')->get();
+
+    $videos = $level->videos()
+    ->with('category','image','tags')
+    -> withCount('comments')->get();
+
+    return view('level', [
+        'level' => $level,
+        'posts' => $posts,
+        'videos' => $videos
+    ]); // Usa array asociativo para pasar datos
+})->name('level');
